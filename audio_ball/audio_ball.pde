@@ -1,3 +1,7 @@
+/* NOTE, not written by me. Found at:
+ *      http://www.openprocessing.org/sketch/34257
+ */
+
 import ddf.minim.*; //Minim library
  
 Minim minim; //base minim object
