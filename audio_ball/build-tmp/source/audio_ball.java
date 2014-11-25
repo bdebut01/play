@@ -16,6 +16,10 @@ import java.io.IOException;
 
 public class audio_ball extends PApplet {
 
+/* NOTE, not written by me. Found at:
+ *      http://www.openprocessing.org/sketch/34257
+ */
+
  //Minim library
  
 Minim minim; //base minim object
