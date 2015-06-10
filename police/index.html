@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+	text {
+	  font: 10px sans-serif;
+	}
+</style>
+<script src="../d3/d3.min.js"></script>
+
+<body>
+<script>
+var diameter = 960;//,
+var color = d3.scale.linear()
+		.domain([16, 87])
+		.range(["red", "black"])
+	format = d3.format(",d");
+
+
+var pack = d3.layout.pack()
+	.sort(null)
+	.size([diameter,diameter])
+	.value(function(d) {return format(d.age);})
+	.padding(1.5);
+
+var svg = d3.select('body').append('svg')
+	.attr('width', diameter)
+	.attr('height', diameter)
+	.attr('class', "bubble");
+
+d3.csv("the-counted.csv", function(error, root) {
+	//color.domain(d3.extent(root, function(d) { return format(d.age); }));
+
+	svg.selectAll("circle")
+		.data(pack.nodes({children: root}).slice(1))
+	  	.enter().append("circle")
+			.attr('r', function(d) { return d.r;  })
+			.attr('cx', function(d) { return d.x; })
+			.attr('cy', function(d) { return d.y; })
+			.style('fill', function(d) { return color(format(d.age)); })
+		.append("title")
+			.style('fill', 'black')
+			.text(function(d) {
+				return d.name 
+					+ "\nage: " + d.age + " yrs"
+					+ "\n"+ d.city + ", " + d.state;
+			});
+		
+});
+
+// function classes(root) {
+//   var classes = [];
+
+//   function recurse(name, node) {
+//     if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+//     else classes.push({packageName: name, className: node.name, value: node.size});
+//   }
+
+//   recurse(null, root);
+//   return {children: classes};
+// }
+
+d3.select(self.frameElement).style("height", diameter + "px");
+
+// var width = 600,
+// 	height = 300,
+// 	margin = 10,
+// 	r_norm = 3,
+// 	r_sel  = 10,
+// 	dot_spacing = 2s;
+
+// var svg = d3.select('body').append("svg")
+// 					 .attr("width", width)
+// 					 .attr("height", height)
+// 					 .attr("margin", margin)
+// 					 .style("background", 'lightgrey');
+
+
+// var x = d3.scale.linear().domain([0, 100]).range([margin, width-margin]);
+// /* Note: have y running top to bottom (top left to bottom left) */
+// var y = d3.scale.linear().domain([0, 100]).range([margin, height-margin]);
+
+// console.log("bout to json");
+// d3.json("data.json", function(error,json) {
+// 	if(error) console.log("fack");
+
+// 	var dots = svg.selectAll('.dot').data(json)
+// 				.enter().append('circle')
+// 				.attr("class", "dot")
+// 				//.attr("float", "left")
+// 				.attr("cx", function(d,i) {return x(i)%width;})
+// 				.attr("cy", function(d,i) {return y(i);})
+// 				.attr("r",  r_norm)
+// 				.on('mouseover', function(d, i) {
+// 					d3.selectAll('.dot')
+// 						.filter(function(d, j) { return i !== j;})
+// 						.transition()
+// 						.duration(400)
+// 						.style('fill-opacity', .5);
+// 					d3.selectAll('.dot')
+// 						.filter(function(d, j) {return i === j;})
+// 						.transition()
+// 						.duration(400)
+// 						.attr('r', r_sel);
+// 					console.log(d.name);
+// 				})
+// 				.on('mouseout', function() {
+// 					d3.selectAll('.dot')
+// 						.transition().duration(400)
+// 						.style('fill-opacity', 1)
+// 						.attr('r', r_norm);
+// 				})
+				
+
+// 		.style('fill', 'black')
+// 	});
+// console.log("done parsing");
+</script>
+</body>
