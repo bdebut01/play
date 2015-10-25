@@ -1,4 +1,4 @@
 <Response>
 <Say voice="alice">Hey Ben! Enjoy!</Say>
-<Play>http://demo.twilio.com/docs/voice.xml</Play>
+<Play>http://demo.twilio.com/docs/classic.mp3</Play>
 </Response>
