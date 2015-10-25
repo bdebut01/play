@@ -1,4 +1,4 @@
 <Response>
 <!-- <Say voice="alice">Thanks for trying our documentation. Enjoy!</Say> -->
-<Play>https://ia802504.us.archive.org/28/items/MyWayFrankSinatra/my%20way%20-%20frank%20sinatra_.mp3</Play>
+<Play>http://demo.twilio.com/docs/voice.xml</Play>
 </Response>
