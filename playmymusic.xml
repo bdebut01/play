@@ -1,4 +1,4 @@
 <Response>
-<!-- <Say voice="alice">Thanks for trying our documentation. Enjoy!</Say> -->
+<Say voice="alice">Hey Ben! Enjoy!</Say>
 <Play>http://demo.twilio.com/docs/voice.xml</Play>
 </Response>
